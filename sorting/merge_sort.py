@@ -1,37 +1,38 @@
-def merge(l, left, right, rightEnd):
+def merge(arr, left, right, right_end):
     start = left
-    leftEnd = right-1
-    result = []
-    while left <= leftEnd and right <= rightEnd:
-        if l[left] < l[right]:
-            result.append(l[left])
+    left_end = right-1
+    merged_arr = []
+    while left <= left_end and right <= right_end:
+        if arr[left] < arr[right]:
+            merged_arr.append(arr[left])
             left += 1
         else:
-            result.append(l[right])
+            merged_arr.append(arr[right])
             right += 1
-    while left <= leftEnd:  # copy remaining left half if any
-        result.append(l[left])
+
+    while left <= left_end:
+        merged_arr.append(arr[left])
         left += 1
-    while right <= rightEnd:  # copy remaining right half if any
-        result.append(l[right])
+    while right <= right_end:
+        merged_arr.append(arr[right])
         right += 1
 
-    for ele in result:  # copy result back to list l
-        l[start] = ele
+    for ele in merged_arr:
+        arr[start] = ele
         start += 1
-        if start > rightEnd:
+        if start > right_end:
             break
 
 
-def mergeSort(l, left, right):
-    center = (left+right)//2
+def merge_sort(arr, left, right):
+    mid = left + (right-left)//2
     if left < right:
-        mergeSort(l, left, center)
-        mergeSort(l, center+1, right)
-        merge(l, left, center+1, right)
+        merge_sort(arr, left, mid)
+        merge_sort(arr, mid+1, right)
+        merge(arr, left, mid+1, right)
 
 
-l = [5, 3, 6, 1, 2, 7, 8, 4]
-print(l)
-mergeSort(l, 0, len(l)-1)
-print(l)
+arr = [5, 3, 6, 1, 2, 7, 8, 4]
+print(arr)
+merge_sort(arr, 0, len(arr)-1)
+print(arr)

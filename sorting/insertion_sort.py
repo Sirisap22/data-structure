@@ -1,10 +1,15 @@
-def insertion(l):
-    for i in range(1, len(l)):
-        iEle = l[i]
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        insert_ele = arr[i]
         for j in range(i, -1, -1):
-            if iEle < l[j-1] and j > 0:
-                l[j] = l[j-1]
+            if insert_ele < arr[j-1] and j > 0:
+                arr[j] = arr[j-1]
             else:
-                l[j] = iEle
+                arr[j] = insert_ele
                 break
+
+arr = [5, 6, 2, 3, 0, 1, 4]
+insertion_sort(arr)
+print(arr)
+
 

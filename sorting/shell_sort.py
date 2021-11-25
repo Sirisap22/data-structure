@@ -1,16 +1,16 @@
-def shell(l, dIncrements):
-    for inc in dIncrements:  # for each deminishing increment
-        for i in range(inc, len(l)):  # insertion sort
-            iEle = l[i]  # inserting element
-            for j in range(i, -1, -inc):
-                if iEle < l[j-inc] and j >= inc:
-                    l[j] = l[j-inc]
+def shell_sort(arr, diminish_seq):
+    for num in diminish_seq:
+        for i in range(num, len(arr)):
+            insert_ele = arr[i] 
+            for j in range(i, -1, -num):
+                if insert_ele < arr[j-num] and j >= num:
+                    arr[j] = arr[j-num]
                 else:
-                    l[j] = iEle
+                    arr[j] = insert_ele
                     break
 
 
-l = [10, 11, 1, 13, 2, 6, 4, 12, 5, 8, 7, 9, 3]
-dIncrements = [5, 3, 1]
-shell(l, dIncrements)
-print(l)
+arr = [10, 11, 1, 13, 2, 6, 4, 12, 5, 8, 7, 9, 3]
+seq = [5, 3, 1] # [109, 41, 19, 5, 1]
+shell_sort(arr, seq)
+print(arr)

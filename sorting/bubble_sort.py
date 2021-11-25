@@ -1,5 +1,3 @@
-
-
 def bubble_sort(arr):
   for end in range(len(arr)-1, 0, -1):
     is_swaped = False
